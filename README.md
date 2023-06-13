@@ -49,10 +49,6 @@ The JavaScript code performs the following tasks:
     
 7. Uses `Promise.all` to wait for all the images to load. Once all images have loaded, it calls the `onImagesLoaded` function.
 
-## License
-
-This project is licensed under the [MIT License](https://chat.openai.com/LICENSE).
-
 ## Contributing
 
 Contributions are welcome! Fork this repository and make your desired changes. Feel free to open an issue or submit a pull request for improvements or bug fixes.
