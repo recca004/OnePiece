@@ -1,0 +1,122 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  font-family: "Operator Mono", monaco, menlo, monospace;
+}
+
+.container {
+  position: relative;
+  height: 100vh;
+  overflow: scroll;
+  background: #000;
+}
+
+.scroller {
+  display: block;
+  height: 250vh;
+}
+
+img {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: clamp(100px, 1000px, 80vw);
+  height: clamp(100px, 1000px, 80vh);
+  object-fit: contain;
+  transform: translate(-50%, -50%);
+  background: #000;
+  pointer-events: none;
+}
+
+.layer {
+  z-index: 2;
+}
+
+.scroll-arrow {
+  position: fixed;
+  bottom: 4%;
+  left: 50%;
+  height: .5em;
+  font-size: 36px;
+  transform: translate(-50%, -50%);
+  animation: scroll-down 1s infinite steps(3);
+}
+
+@keyframes scroll-down {
+  from {
+    color: #fff;
+  }
+  33% {
+    color: #aaa;
+  }
+  66% {
+    color: #666;
+  }
+  to {
+    font-size: 28px;
+    transform: translate(-50%, 10%);
+    color: #333;
+  }
+}
+
+.scroll-arrow::before,
+.scroll-arrow::after {
+  content: "";
+  display: block;
+  width: .7em;
+  height: 0.03em;
+  color: inherit;
+  background: currentColor;
+}
+
+.scroll-arrow::before {
+  transform:
+    rotate(36deg)
+    translateX(-45%)
+}
+
+.scroll-arrow::after {
+  transform:
+    rotate(-36deg)
+    translateX(52.5%)
+}
+
+.has-scrolled .scroll-arrow {
+  animation: fade-out .25s linear forwards;
+}
+
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+.loading {
+  position: fixed;
+  bottom: 4%;
+  left: 4%;
+  color: #fff;
+  font-size: 14px;
+  text-transform: capitalize;
+}
+
+.loading::after {
+  content: "";
+  animation: loading 1s infinite;
+}
+
+@keyframes loading {
+  25% {
+    content: ".";
+  }
+  50% {
+    content: "..";
+  }
+  75% {
+    content: "...";
+  }
+}
+
+.has-loaded .loading {
+  display: none;
+}
